@@ -1,0 +1,17 @@
+service postgres start
+sudo systemctl enable --now postgresql.service
+
+
+sudo -u postgres psql -f create_db.sql
+
+
+
+
+sudo rm -rf /var/lib/postgres/data
+sudo mkdir /var/lib/postgres/data
+sudo chown postgres /var/lib/postgres/data
+sudo -i -u postgres
+initdb  -D '/var/lib/postgres/data'
+exit
+sudo systemctl enable --now postgresql.service
+sudo -i -u postgres
